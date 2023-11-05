@@ -1,5 +1,5 @@
 import { RestaurentCard } from "./RestaurantCard";
-import { restaurants } from "./resdetails";
+import { restaurants } from "../../util.js/resdetails";
 
 export const Body=()=>{
      return (
