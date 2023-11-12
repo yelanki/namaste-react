@@ -43,3 +43,7 @@
 .rest-logo{
     width: 100%; 
 }
+.filter-button{
+    margin: 10px;
+    cursor: pointer;
+}
