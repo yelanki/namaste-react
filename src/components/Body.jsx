@@ -1,6 +1,9 @@
 import { useState,useEffect } from "react";
 import { RestaurentCard } from "./RestaurantCard";
-import { restaurants } from "../../util.js/resdetails";
+import { restaurants } from "../../utils/resdetails";
+import { Shimmer } from "./Shimmer";
+import { CDN_URL } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
  
 
@@ -20,12 +23,15 @@ export const Body=()=>{
  },[]);
 
  const fetchData=async()=>{
- const fetchedData=await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+ const fetchedData=await fetch(CDN_URL);
    const jsond=await fetchedData.json()
-   setFilteredList(jsond?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     console.log('d',jsond.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+   setFilteredList(jsond?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
  }
 
+if(filterList.length===0){
+  return <Shimmer/>
+}
+console.log('filterList',filterList)
      return (
       <div className='body'>
       <div className='filter'>
@@ -35,8 +41,8 @@ export const Body=()=>{
       </div>
       <div className='rest-container'>
         {filterList.map((restaurant) => {
-          console.log(restaurant)
-  return <RestaurentCard key={restaurant.id} details={restaurant} />;
+          console.log(restaurant.info.id)
+  return <Link key={restaurant.info.id} to={"/restaurantmenu/"+restaurant.info.id}><RestaurentCard  details={restaurant} /></Link>;
          })}
       </div>
       </div>

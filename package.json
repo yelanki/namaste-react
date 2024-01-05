@@ -4,8 +4,8 @@
   "description": "This is namaste react ",
   "scripts": {
     "test": "jest",
-    "dev":"npx parcel index.html",
-    "build":"npx parcel build index.html"
+    "dev": "npx parcel index.html",
+    "build": "npx parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,10 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }
