@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 export const Body=()=>{
   const [filterList,setFilteredList]=useState([]);
+  console.log('filterList',filterList)
   const filter=()=>{
        let filterd=[];
     restaurants.filter((res)=>{
@@ -25,14 +26,16 @@ export const Body=()=>{
  const fetchData=async()=>{
  const fetchedData=await fetch(CDN_URL);
    const jsond=await fetchedData.json()
-   setFilteredList(jsond?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   setFilteredList(jsond?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   console.log('json',jsond?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
  }
 
-if(filterList.length===0){
-  return <Shimmer/>
-}
+// if(filterList.length===0){
+//   return <Shimmer/>
+// }
 console.log('filterList',filterList)
      return (
+      filterList?.length===0 ? <Shimmer/>:
       <div className='body'>
       <div className='filter'>
         <button className="filter-button"

@@ -29,5 +29,7 @@ export default UserClass;
 
 
 // Notes in React Class Components:-
-// We can not update state like this.state.count=this.state.count++;
+// We can not update state directly in Class components like this.state.count=this.state.count++;
 // If we want to update state, we have to use 'this.setState' which is given by React.
+// When initializing a class based component first contructor will be called->next super()->next render()->next componentDidMount().(Incase there is any child inside the render it will call
+//that child first and finally only 'componentDidMount' will be called).
